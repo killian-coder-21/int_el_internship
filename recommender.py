@@ -5,8 +5,8 @@ import pickle
 app = Flask(__name__)
 # loading models
 # movies = pd.read_csv('movies.csv')
-movies = pickle.load(open(r"C:\Users\killi\OneDrive\Documents\Other_Stuff\Data_Internship\Project_2\model.pkl", 'rb'))
-similarity = pickle.load(open(r"C:\Users\killi\OneDrive\Documents\Other_Stuff\Data_Internship\Project_2\similarity.pkl", 'rb'))
+movies = pickle.load(open(r"model.pkl", 'rb'))
+similarity = pickle.load(open(r"similarity.pkl", 'rb'))
 # function to fetch movie poster
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=390e76286265f7638bb6b19d86474639&language=en-US".format(movie_id)
@@ -44,4 +44,5 @@ def recommend():
                            recommended_movie_posters=recommended_movie_posters)
 
 if __name__ == '__main__':
+
     app.run(debug=True)
